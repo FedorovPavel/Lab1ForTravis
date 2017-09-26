@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "6"
+
+before_install:
+  - cd ./Lab1/ 
+
+install:
+  - npm install
+  - npm install -g mocha
+
+env:
+  - Test_dir=./test/controllers
+  # - Test_dir=./Lab1/test/models
+  # - Test_dir=./Lab1/test/views
+
+script:  cd $Test_dir && mocha *.js
+ 
+deploy:
+  provider: heroku
+  app : disptest
+  api_key:
+    secure: 2988dfd5-cf14-4875-a4dd-74dc9c8fad16
+  strategy: git
